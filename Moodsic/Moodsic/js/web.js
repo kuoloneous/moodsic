@@ -55,6 +55,12 @@ $(document).ready(function () {
     	$("#loadingView").hide(function() {
 			});
     	$("#playerView").show();
+
+    	$("#loadingImage1").hide();
+    	$("#loadingImage2").hide();
+    	$("#loadingImage3").hide();
+
+    	//Remove the images from 
 		
 	}
 
@@ -202,6 +208,7 @@ $(document).ready(function () {
     	var upper = thumbnailCount + 8;
     	var newPage = $("<div class='thumbPage' id ='" + thumbnailCount/8 + "'>");
     	for(var i = thumbnailCount; i < upper; i++){
+    		
     		var newImage = $("<div class='thumbnailView' id='image" + i + "'  style='background-image:url(" + flickrUrlList[i].url + ")'>");
     		//var newImage = $("<div class='thumbnailView' id='image" + i + "' url='test' style='background: red; box-shadow:inset 0 0 50px 5px #000000;'>");
     		newImage.data('url', flickrUrlList[i].url);
