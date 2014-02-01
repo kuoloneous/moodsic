@@ -5,3 +5,5 @@ images\splashscreen.scale-100.png
 images\storelogo.scale-100.png
 index.html
 js\default.js
+js\jquery-2.1.0.js
+js\web.js

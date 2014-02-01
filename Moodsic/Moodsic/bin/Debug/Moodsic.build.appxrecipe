@@ -36,6 +36,12 @@
     <AppxPackagedFile Include="C:\Users\Albert\Documents\GitHub\spderp\Moodsic\Moodsic\js\default.js">
       <PackagePath>js\default.js</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Albert\Documents\GitHub\spderp\Moodsic\Moodsic\js\jquery-2.1.0.js">
+      <PackagePath>js\jquery-2.1.0.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Albert\Documents\GitHub\spderp\Moodsic\Moodsic\js\web.js">
+      <PackagePath>js\web.js</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Albert\Documents\GitHub\spderp\Moodsic\Moodsic\css\default.css">
       <PackagePath>css\default.css</PackagePath>
     </AppxPackagedFile>
