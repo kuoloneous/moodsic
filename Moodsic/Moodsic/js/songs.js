@@ -5,9 +5,16 @@ function parseQueryResults( data ) {
 	var myJSON = $.xml2json(data);
 	console.log(myJSON);
 	
-	var track = "";
+	if (myJSON.totalResults == 1) {
+		var track_href = myJSON.track.href;
 
-	var track_href = myJSON.track[0].href;
+	} else if (myJSON.totalResults == 0) {
+		var track_href = "spotify:track:0x6NRv1pZBsiu32w9sPAiX"
+
+	} else {
+
+		var track_href = myJSON.track[0].href;
+	}
 
 	console.log(track_href);
 
