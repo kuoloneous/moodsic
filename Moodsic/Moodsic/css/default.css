@@ -80,3 +80,11 @@
     padding-left: 10px;
     padding-top: 10px;
 }
+
+#musicView
+{
+    width:100%;
+    height: 100%;
+    position: relative;
+    background-color: red;
+}
