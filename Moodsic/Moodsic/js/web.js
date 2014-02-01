@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
 	var pressedButtons;
 	var thumbnailCount= 0;
 	//Data aggregated from Flickr for 64 images
@@ -7,12 +6,9 @@ $(document).ready(function () {
 
 	init();
 
-
-
 	function init(){
 		getRandomFlickrPhotos();
 		loadImagesObjects(thumbnailCount);
-
 	}
 
     function loadImagesObjects(tc) {
@@ -59,49 +55,12 @@ $(document).ready(function () {
 
 	}
 
-    $('.thumbnailView').click(function (event) {
-    	if( $(this).data('clicked') == false || $(this).data('clicked') == null){
-	    	$(this).data('clicked', true);
-	        $(this).css("border", "10px solid black").css("box-sizing", "border-box");
-    	} else {
-			$(this).data('clicked', false);
-		    $(this).css("border", "0px").css("box-sizing", "border-box");
-		    //remove image from pressed
-    	}
-
-
-        if ($('.imgSelected').length == 2) {
-
-        	$(this).addClass("imgSelected");
-
-        	selected_urls = [];
-
-        	$(".imgSelected").each(function(obj) {
-
-        		selected_urls.push($(this).attr("url"));
-
-        	});
-
-        	// Now I have all three urls.... What to do?
-
-                    	
-
-        	console.log(selected_urls);
-
-        } else {
-
-	        $(this).addClass("imgSelected");
-
-        }
-
-    });
-
-    $("div#scrollView").smoothDivScroll({
+	$("div#scrollView").smoothDivScroll({
     	autoScrollingMode: "",
     	hotSpotScrolling: false,
     	touchScrolling: true,
 
-    	startAtElementId: "b",
+    	startAtElementId: "1",
 		scrollToAnimationDuration: 2000,
 		scrollToEasingFunction: "easeOutBounce",
 
@@ -115,4 +74,41 @@ $(document).ready(function () {
     $("div#scrollView").smoothDivScroll("scrollToElement", "first");
 
 
+    $('.thumbnailView').click(function (event) {
+    	if( $(this).data('clicked') == false || $(this).data('clicked') == null){
+	    	$(this).data('clicked', true);
+	        $(this).css("border", "10px solid black").css("box-sizing", "border-box");
+    	} else {
+			$(this).data('clicked', false);
+		    $(this).css("border", "0px").css("box-sizing", "border-box");
+		    //remove image from pressed
+    	}
+        if ($('.imgSelected').length == 2) {
+
+        	$(this).addClass("imgSelected");
+
+        	selected_urls = [];
+
+        	$(".imgSelected").each(function(obj) {
+
+        		selected_urls.push($(this).attr("url"));
+
+        	});
+
+        	// Now I have all three urls.... What to do?
+			console.log(selected_urls);
+        } else {
+	        $(this).addClass("imgSelected");
+        }
+
+        $("div#scrollView").transition({
+          opacity: '0',
+		  perspective: '1000px',
+		  rotateX: '90deg',
+		  complete: function() {
+		  		$("div#scrollView").toggle();
+		  }
+		}, 500, "easeOutQuad");
+
+    });
 });
