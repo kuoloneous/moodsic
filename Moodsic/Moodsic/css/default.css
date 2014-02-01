@@ -25,14 +25,17 @@
     float: left;
     margin: 0;
     padding: 0;
+    width: 600px;
+    height: 600px;
 }
-
+/*
 .thumbnailView{
     width: 25%;
-    height: 50%;
+    height: 25%;
     float:left;
-    background-size: 100% auto;
+    //background-size: auto 100%;
 }
+*/
 .thumbPage{
     height:100%;
     width:100%;
