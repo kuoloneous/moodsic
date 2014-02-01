@@ -1,4 +1,5 @@
 var myColors = [];
+var myQuery = "";
 
 function Color(red, green, blue) {
 
@@ -175,8 +176,7 @@ function checkColorsReady() {
 function performColorQuery() {
 
 	var myMood = new Mood(myColors);
-
-	console.log(myMood.getQuery());
+	getEchoListFromQueryString(myMood.getQuery());
 
 }
 
