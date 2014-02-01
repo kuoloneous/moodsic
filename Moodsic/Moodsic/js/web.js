@@ -8,8 +8,17 @@ $(document).ready(function () {
 	//Data aggregated from Flickr for 64 images
 	var flickrUrlList = new Array(); //title, ownername, url
 
+
+    $('#playerView').click(function (event) {
+            $('#playerView').append("<iframe src=\"https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:5Z7ygHQo02SUrFmcgpwsKW,1x6ACsKV4UdWS2FMuPFUiT,4bi73jCM02fMpkI11Lqmfe\" frameborder=\"0\" width=\"640\" height=\"720\" allowtransparency=\"true\"></iframe>");
+    });
+
 	init();
-    
+
+	getColorInfoFromUrls(["http://farm3.staticflickr.com/2607/4094219225_fff6b1603d_b.jpg", "http://farm8.staticflickr.com/7348/12227966384_c557261b47_b.jpg", "http://farm8.staticflickr.com/7371/12149581744_da519279da_b.jpg"]);
+
+	getSongsFromQuery("Linkin Park Numb");
+
 	function init(){
 		//Initialize Photos
 		getRandomFlickrPhotos();
@@ -21,7 +30,6 @@ $(document).ready(function () {
 		$("loadingView").hide();
 		$("playerView").hide();
 
-		//Initialize Dev Buttons
 		$("#scrollViewButton").click(function(event){
 		    	$("#loadingView").hide(function() {
 					});
@@ -43,6 +51,13 @@ $(document).ready(function () {
 					});
 		    	$("#playerView").show();
 		});
+	    $('#backButton').click(function (event) {
+	            $("#loadingView").hide(function() {
+	                });
+	            $("#playerView").hide(function() {
+	                });
+	            $("#homeView").show();
+	    });
 
 		//load scroller
 		$("#scrollView").smoothDivScroll({
@@ -121,6 +136,7 @@ $(document).ready(function () {
     	flickr_url = flickr_url	+ Math.floor((Math.random()*392)+1);
     	//$.getJSON(flickr_url, function(data){
 
+
         $.ajax({
         url: flickr_url,
         async:false,
@@ -147,7 +163,6 @@ $(document).ready(function () {
     }
     
 
-    
     /*
      $('.thumbnailView').click(function (event) {
      if( $(this).data('clicked') == false || $(this).data('clicked') == null){
@@ -176,14 +191,9 @@ $(document).ready(function () {
      } else {
      $(this).addClass("imgSelected");
      }
-     
-     $("div#scrollView").transition({
-     opacity: '0',
-     perspective: '1000px',
-     rotateX: '90deg',
-     }, 500, "easeOutQuad");
-     });
      */
 
 });
+
+
 
