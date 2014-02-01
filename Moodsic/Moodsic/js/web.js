@@ -98,9 +98,7 @@ $(document).ready(function () {
     });
     
     $("#scrollView").smoothDivScroll("scrollToElement", "first");
-    
-    $("#scrollView").hide();
-    $("#chooseBar").hide();
+
     
     /*
      $('.thumbnailView').click(function (event) {
