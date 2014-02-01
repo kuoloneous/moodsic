@@ -1,42 +1,14 @@
 ﻿
 $(document).ready(function () {
 
-	var pressedButtons;
+
+
+	var selectedImages = new Array();
 	var thumbnailCount= 0;
 	//Data aggregated from Flickr for 64 images
 	var flickrUrlList = new Array(); //title, ownername, url
 
-	$("loadingView").hide();
-	$("playerView").hide();
 
-	$("#scrollViewButton").click(function(event){
-	    	$("#loadingView").hide(function() {
-				});
-	    	$("#playerView").hide(function() {
-				});
-	    	$("#homeView").show();
-	});
-	$("#loadingViewButton").click(function(event){ 
-	    	$("#homeView").hide(function() {
-				});
-	    	$("#playerView").hide(function() {
-				});
-	    	$("#loadingView").show();
-	});
-	$("#playerViewButton").click(function(event){ 
-	    	$("#homeView").hide(function() {
-				});
-	    	$("#loadingView").hide(function() {
-				});
-	    	$("#playerView").show();
-	});
-    $('#backButton').click(function (event) {
-            $("#loadingView").hide(function() {
-                });
-            $("#playerView").hide(function() {
-                });
-            $("#homeView").show();
-    });
     $('#playerView').click(function (event) {
             $('#playerView').append("<iframe src=\"https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:5Z7ygHQo02SUrFmcgpwsKW,1x6ACsKV4UdWS2FMuPFUiT,4bi73jCM02fMpkI11Lqmfe\" frameborder=\"0\" width=\"640\" height=\"720\" allowtransparency=\"true\"></iframe>");
     });
@@ -47,19 +19,113 @@ $(document).ready(function () {
 
 
 	function init(){
+		//Initialize Photos
 		getRandomFlickrPhotos();
-		loadImagesObjects(thumbnailCount);
+		loadImagesObjects();
+		loadImagesObjects();
+		loadImagesObjects();
+
+		//Initialize Views
+		$("loadingView").hide();
+		$("playerView").hide();
+
+		$("#scrollViewButton").click(function(event){
+		    	$("#loadingView").hide(function() {
+					});
+		    	$("#playerView").hide(function() {
+					});
+		    	$("#homeView").show();
+		});
+		$("#loadingViewButton").click(function(event){ 
+		    	$("#homeView").hide(function() {
+					});
+		    	$("#playerView").hide(function() {
+					});
+		    	$("#loadingView").show();
+		});
+		$("#playerViewButton").click(function(event){ 
+		    	$("#homeView").hide(function() {
+					});
+		    	$("#loadingView").hide(function() {
+					});
+		    	$("#playerView").show();
+		});
+	    $('#backButton').click(function (event) {
+	            $("#loadingView").hide(function() {
+	                });
+	            $("#playerView").hide(function() {
+	                });
+	            $("#homeView").show();
+	    });
+
+		//load scroller
+		$("#scrollView").smoothDivScroll({
+	    autoScrollingMode: "",
+	    hotSpotScrolling: false,
+	    touchScrolling: true,
+	        
+	    startAtElementId: "image1",
+	    scrollToAnimationDuration: 2000,
+	    scrollToEasingFunction: "easeOutBounce",
+	        
+	    mousewheelScrollingStep: 1,
+	    mousewheelScrolling: "horizontal",
+	    easingAfterMouseWheelScrolling: true,
+	    easingAfterMouseWheelScrollingFunction: "easeOutQuad",
+	    easingAfterMouseWheelScrollingDuration: 500,
+	    });
+	    
+	    $("#scrollView").smoothDivScroll("scrollToElement", "first");
+
+	 	$("#scrollableArea").css("width", 100*(thumbnailCount/8 + 1) + "%" );
+
+	    $('.thumbnailView').click(function (event) {
+
+	     if( $(this).data('clicked') == false || $(this).data('clicked') == null){
+		     $(this).data('clicked', true);
+		     $(this).css("border", "10px solid black").css("box-sizing", "border-box");
+		     addImage($(this).data('url'));
+	     } else {
+	     	console.log($(this).data('clicked'));	
+		     $(this).data('clicked', false);
+		     $(this).css("border", "0px").css("box-sizing", "border-box");
+		     removeImage($(this).data('url'));
+		   	
+	   
+	     }
+	     console.log(selectedImages);
+	 	});
+
+	}
+	function addImage(image_url){
+		selectedImages.push({
+			url: image_url,
+		});
 
 	}
 
-	function loadImagesObjects(tc) {
+	function removeImage(image_url){
+		for(var i = 0; i < selectedImages.length; i++){
+			if(selectedImages[i].url == image_url){
+				selectedImages = selectedImages.splice(i, 1);
+			}
+		}
+	}
+	function loadImagesObjects() {
     	//and div to scroll view and then 
-    	var upper = tc + 8;
-    	for(var i = tc; i < upper; i++){
-    		var newImage = "<div class='thumbnailView' id='" + i + "' url='" + flickrUrlList[i].url + "' style='background-image:url(" + flickrUrlList[i].url + ")'>";
-    		$("#scrollView").append(newImage);
+    	var upper = thumbnailCount + 8;
+    	var newPage = $("<div class='thumbPage' id ='" + thumbnailCount/8 + "'>");
+    	for(var i = thumbnailCount; i < upper; i++){
+    		//var newImage = "<div class='thumbnailView' id='image" + i + "' url='" + flickrUrlList[i].url + "' style='background-image:url(" + flickrUrlList[i].url + ")'>";
+    		var newImage = $("<div class='thumbnailView' id='image" + i + "' url='test' style='background: red; box-shadow:inset 0 0 50px 5px #000000;'>");
+    		newImage.data('url', flickrUrlList[i].url);
+    		newPage.append(newImage);
+    		thumbnailCount++;
+    		//$("#scrollView").append(newImage);
     		//w8 $("#scrollView").append(toStaticHTML(newImage));
     	}
+
+    	$("#scrollView").append(newPage);
  	}
     
     function getRandomFlickrPhotos(){
@@ -95,23 +161,6 @@ $(document).ready(function () {
         
     }
     
-    $("#scrollView").smoothDivScroll({
-        autoScrollingMode: "",
-        hotSpotScrolling: false,
-        touchScrolling: true,
-            
-        startAtElementId: "1",
-        scrollToAnimationDuration: 2000,
-        scrollToEasingFunction: "easeOutBounce",
-            
-        mousewheelScrollingStep: 1,
-        mousewheelScrolling: "horizontal",
-        easingAfterMouseWheelScrolling: true,
-        easingAfterMouseWheelScrollingFunction: "easeOutQuad",
-        easingAfterMouseWheelScrollingDuration: 500,
-    });
-    
-    $("#scrollView").smoothDivScroll("scrollToElement", "first");
 
     /*
      $('.thumbnailView').click(function (event) {
