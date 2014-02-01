@@ -30,6 +30,16 @@ $(document).ready(function () {
 				});
 	    	$("#playerView").show();
 	});
+    $('#backButton').click(function (event) {
+            $("#loadingView").hide(function() {
+                });
+            $("#playerView").hide(function() {
+                });
+            $("#homeView").show();
+    });
+    $('#playerView').click(function (event) {
+            $('#playerView').append("<iframe src=\"https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:5Z7ygHQo02SUrFmcgpwsKW,1x6ACsKV4UdWS2FMuPFUiT,4bi73jCM02fMpkI11Lqmfe\" frameborder=\"0\" width=\"640\" height=\"720\" allowtransparency=\"true\"></iframe>");
+    });
 
 	init();
 
@@ -87,24 +97,23 @@ $(document).ready(function () {
     }
     
     $("#scrollView").smoothDivScroll({
-    autoScrollingMode: "",
-    hotSpotScrolling: false,
-    touchScrolling: true,
-        
-    startAtElementId: "1",
-    scrollToAnimationDuration: 2000,
-    scrollToEasingFunction: "easeOutBounce",
-        
-    mousewheelScrollingStep: 1,
-    mousewheelScrolling: "horizontal",
-    easingAfterMouseWheelScrolling: true,
-    easingAfterMouseWheelScrollingFunction: "easeOutQuad",
-    easingAfterMouseWheelScrollingDuration: 500,
+        autoScrollingMode: "",
+        hotSpotScrolling: false,
+        touchScrolling: true,
+            
+        startAtElementId: "1",
+        scrollToAnimationDuration: 2000,
+        scrollToEasingFunction: "easeOutBounce",
+            
+        mousewheelScrollingStep: 1,
+        mousewheelScrolling: "horizontal",
+        easingAfterMouseWheelScrolling: true,
+        easingAfterMouseWheelScrollingFunction: "easeOutQuad",
+        easingAfterMouseWheelScrollingDuration: 500,
     });
     
     $("#scrollView").smoothDivScroll("scrollToElement", "first");
 
-    
     /*
      $('.thumbnailView').click(function (event) {
      if( $(this).data('clicked') == false || $(this).data('clicked') == null){
@@ -133,14 +142,9 @@ $(document).ready(function () {
      } else {
      $(this).addClass("imgSelected");
      }
-     
-     $("div#scrollView").transition({
-     opacity: '0',
-     perspective: '1000px',
-     rotateX: '90deg',
-     }, 500, "easeOutQuad");
-     });
      */
 
 });
+
+
 
