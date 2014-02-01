@@ -61,24 +61,24 @@ $(document).ready(function () {
 
 		//load scroller
 		$("#scrollView").smoothDivScroll({
-	    autoScrollingMode: "",
-	    hotSpotScrolling: false,
-	    touchScrolling: true,
-	        
-	    startAtElementId: "image1",
-	    scrollToAnimationDuration: 2000,
-	    scrollToEasingFunction: "easeOutBounce",
-	        
-	    mousewheelScrollingStep: 1,
-	    mousewheelScrolling: "horizontal",
-	    easingAfterMouseWheelScrolling: true,
-	    easingAfterMouseWheelScrollingFunction: "easeOutQuad",
-	    easingAfterMouseWheelScrollingDuration: 500,
+    	    autoScrollingMode: "",
+    	    hotSpotScrolling: false,
+    	    touchScrolling: true,
+    	        
+    	    startAtElementId: "image1",
+    	    scrollToAnimationDuration: 2000,
+    	    scrollToEasingFunction: "easeOutBounce",
+    	        
+    	    mousewheelScrollingStep: 1,
+    	    mousewheelScrolling: "horizontal",
+    	    easingAfterMouseWheelScrolling: true,
+    	    easingAfterMouseWheelScrollingFunction: "easeOutQuad",
+    	    easingAfterMouseWheelScrollingDuration: 500,
 	    });
 	    
 	    $("#scrollView").smoothDivScroll("scrollToElement", "first");
 
-	 	$("#scrollableArea").css("width", 100*(thumbnailCount/8 + 1) + "%" );
+	 	//$("#scrollableArea").css("width", 100*(thumbnailCount/8 + 1) + "%" );
 
 	    $('.thumbnailView').click(function (event) {
 
