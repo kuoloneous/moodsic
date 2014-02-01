@@ -1,6 +1,6 @@
 import colors
 
-myUrls = ["http://miriadna.com/desctopwalls/images/max/Ideal-landscape.jpg"]
+myUrls = ["http://www.colorhexa.com/ff00ff.png"]
 
 myColors = colors.get_color_info_from_urls(myUrls)
 
@@ -12,10 +12,8 @@ myMood = colors.get_mood_info_from_colors(myColors)
 #myMood holds all moods 
 #myMood['dramatic'] holds the value for dramatic^value
 
-myQuery = colors.get_string_info_from_mood(myMood)
-
 print myColors[0][0].red_quadrant
 
 print myMood.dramatic
 
-print myQuery.query
+print myMood.query_string()
