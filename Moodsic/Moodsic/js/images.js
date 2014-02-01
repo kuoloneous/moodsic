@@ -44,14 +44,14 @@ function getMoodQuery() {
 		q.push("mood=light^"+this.light);
 	}
 
-	if (this.brightnessScaled <= 4) {
+	if (this.brightness <= 4) {
 
 		min_tempo = "60";
-		max_tempo = 180 - ((4-Math.floor(this.brightness)) * 20);
+		max_tempo = 180 - ((4-this.brightness) * 20);
 
 	} else {
 
-		min_tempo = 60 + ((Math.floor(this.brightness) - 4) * 10);
+		min_tempo = 60 + (((this.brightness) - 4) * 10);
 		max_tempo = "180";
 
 	}
