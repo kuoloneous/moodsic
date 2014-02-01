@@ -3,7 +3,6 @@
     height: 50%;
     float:left;
     background: grey;
-
 }
 
 #a{
@@ -31,11 +30,11 @@
 }
 
 #g{
-    background-color: yellow;
+    background-color: green;
 }
 
 #h{
-    background-color: yellow;
+    background-color: orange;
 }
 
 #testbutton{
