@@ -18,6 +18,7 @@ $(document).ready(function () {
 	getSongsFromQuery("Linkin Park New Divide");
 	//getColorInfoFromUrls(["http://farm3.staticflickr.com/2607/4094219225_fff6b1603d_b.jpg", "http://farm8.staticflickr.com/7348/12227966384_c557261b47_b.jpg", "http://farm8.staticflickr.com/7371/12149581744_da519279da_b.jpg"]);
 
+	getSongsFromQuery("Linkin Park Numb");
 
 	function hereAreSongIds(ids) {
 
@@ -66,24 +67,24 @@ $(document).ready(function () {
 
 		//load scroller
 		$("#scrollView").smoothDivScroll({
-	    autoScrollingMode: "",
-	    hotSpotScrolling: false,
-	    touchScrolling: true,
-	        
-	    startAtElementId: "image1",
-	    scrollToAnimationDuration: 2000,
-	    scrollToEasingFunction: "easeOutBounce",
-	        
-	    mousewheelScrollingStep: 1,
-	    mousewheelScrolling: "horizontal",
-	    easingAfterMouseWheelScrolling: true,
-	    easingAfterMouseWheelScrollingFunction: "easeOutQuad",
-	    easingAfterMouseWheelScrollingDuration: 500,
+    	    autoScrollingMode: "",
+    	    hotSpotScrolling: false,
+    	    touchScrolling: true,
+    	        
+    	    startAtElementId: "image1",
+    	    scrollToAnimationDuration: 2000,
+    	    scrollToEasingFunction: "easeOutBounce",
+    	        
+    	    mousewheelScrollingStep: 1,
+    	    mousewheelScrolling: "horizontal",
+    	    easingAfterMouseWheelScrolling: true,
+    	    easingAfterMouseWheelScrollingFunction: "easeOutQuad",
+    	    easingAfterMouseWheelScrollingDuration: 500,
 	    });
 	    
 	    $("#scrollView").smoothDivScroll("scrollToElement", "first");
 
-	 	$("#scrollableArea").css("width", 100*(thumbnailCount/8 + 1) + "%" );
+	 	//$("#scrollableArea").css("width", 100*(thumbnailCount/8 + 1) + "%" );
 
 	    $('.thumbnailView').click(function (event) {
 
@@ -99,20 +100,31 @@ $(document).ready(function () {
 		   	
 	   
 	     }
-	     console.log(selectedImages);
+	    
 	 	});
 
 	}
 	function addImage(image_url){
-		selectedImages.push({
-			url: image_url,
-		});
+		selectedImages.push( image_url);
+		//Check for three images
+		if (selectedImages.length == 3){
+			console.log("test");
+			//If three images change view
+	    	$("#homeView").hide(function() {
+				});
+	    	$("#playerView").hide(function() {
+				});
+	    	$("#loadingView").show();
+	    	//Start analyzing
+	    	getColorInfoFromUrls(selectedImages);
+
+		}
 
 	}
 
 	function removeImage(image_url){
 		for(var i = 0; i < selectedImages.length; i++){
-			if(selectedImages[i].url == image_url){
+			if(selectedImages[i] == image_url){
 				selectedImages = selectedImages.splice(i, 1);
 			}
 		}
@@ -122,8 +134,8 @@ $(document).ready(function () {
     	var upper = thumbnailCount + 8;
     	var newPage = $("<div class='thumbPage' id ='" + thumbnailCount/8 + "'>");
     	for(var i = thumbnailCount; i < upper; i++){
-    		//var newImage = "<div class='thumbnailView' id='image" + i + "' url='" + flickrUrlList[i].url + "' style='background-image:url(" + flickrUrlList[i].url + ")'>";
-    		var newImage = $("<div class='thumbnailView' id='image" + i + "' url='test' style='background: red; box-shadow:inset 0 0 50px 5px #000000;'>");
+    		var newImage = $("<div class='thumbnailView' id='image" + i + "'  style='background-image:url(" + flickrUrlList[i].url + ")'>");
+    		//var newImage = $("<div class='thumbnailView' id='image" + i + "' url='test' style='background: red; box-shadow:inset 0 0 50px 5px #000000;'>");
     		newImage.data('url', flickrUrlList[i].url);
     		newPage.append(newImage);
     		thumbnailCount++;

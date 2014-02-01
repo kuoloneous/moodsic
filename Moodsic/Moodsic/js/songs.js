@@ -17,6 +17,11 @@ function parseQueryResults( data ) {
 function checkHrefs(myHrefs){
 	if(myHrefs.length > 2){
 		hereAreSongIds(myHrefs);
+		$("#homeView").hide(function() {
+			});
+    	$("#loadingView").hide(function() {
+			});
+    	$("#playerView").show();
 	}
 
 }
