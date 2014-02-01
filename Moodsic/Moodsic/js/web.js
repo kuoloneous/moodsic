@@ -110,10 +110,45 @@ $(document).ready(function () {
 	    	$("#loadingView").show();
 	    	//Start analyzing
 	    	getColorInfoFromUrls(selectedImages);
+	    	$("#loadingImage1").hide();
+	    	$("#loadingImage2").hide();
+	    	$("#loadingImage3").hide();
+	    	$("#loadingImage1").append("<img src='" + selectedImages[0] + "' class='loadingImage' />");
+	    	$("#loadingImage2").append("<img src='" + selectedImages[1] + "' class='loadingImage' />");
+	    	$("#loadingImage3").append("<img src='" + selectedImages[2] + "' class='loadingImage' />");
+
+	    	//$("#loadingImage1").css("background", "url(" + selectedImages[0] + ") no-repeat center center fixed");
+	    	//$("#loadingImage2").css("background", "url(" + selectedImages[1] + ") no-repeat center center fixed");
+	    	//$("#loadingImage3").css("background", "url(" + selectedImages[2] + ") no-repeat center center fixed");
+
+	    	cycleBackgrounds();
+
+
 
 		}
 
 	}
+	var fadeTime = 4000;
+	function cycleBackgrounds(){
+
+		$("#loadingImage1").fadeIn(4000, function() {
+			//$("#loadingImage3").hide();
+			$("#loadingImage1").fadeOut(4000, function() {
+				$("#loadingImage2").fadeIn(4000, function() {
+					//$("#loadingImage3").hide();
+					$("#loadingImage2").fadeOut(4000, function() {
+						$("#loadingImage3").fadeIn(4000, function() {
+							//$("#loadingImage3").hide();
+							$("#loadingImage3").fadeOut(4000, function() {
+								cycleBackgrounds();			
+							});	
+						});
+					});
+				});
+			});
+		});
+	}
+
 
 	function removeImage(image_url){
 		for(var i = 0; i < selectedImages.length; i++){
