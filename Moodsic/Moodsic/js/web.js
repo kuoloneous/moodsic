@@ -1,4 +1,4 @@
-$(document).ready(function () {
+﻿$(document).ready(function () {
 
 	var pressedButtons;
 	var thumbnailCount= 0;
@@ -13,6 +13,23 @@ $(document).ready(function () {
 		getRandomFlickrPhotos();
 		loadImagesObjects(thumbnailCount);
 
+		$("div#scrollView").smoothDivScroll({
+		    autoScrollingMode: "",
+		    hotSpotScrolling: false,
+		    touchScrolling: true,
+
+		    startAtElementId: "2",
+		    scrollToAnimationDuration: 2000,
+		    scrollToEasingFunction: "easeOutBounce",
+
+		    mousewheelScrollingStep: 1,
+		    mousewheelScrolling: "horizontal",
+		    easingAfterMouseWheelScrolling: true,
+		    easingAfterMouseWheelScrollingFunction: "easeOutQuad",
+		    easingAfterMouseWheelScrollingDuration: 500,
+		});
+
+		$("div#scrollView").smoothDivScroll("scrollToElement", "first");
 	}
 
     function loadImagesObjects(tc) {
@@ -22,7 +39,11 @@ $(document).ready(function () {
     	var upper = tc + 8;
     	for(var i = tc; i < upper; i++){
     		console.log(i);
-    		$("#scrollView").append("<div class='thumbnailView' id='" + i + "' url='" + flickrUrlList[i].url + "' style='background-image:url(" + flickrUrlList[i].url + ")'> </div>");
+    		var newImage = "<div class='thumbnailView' id='" + i + "' url='" + flickrUrlList[i].url + "' style='background-image:url(" + flickrUrlList[i].url + ")'>";
+    		$("#scrollView").append(newImage);
+    		//w8 $("#scrollView").append(toStaticHTML(newImage));
+ 
+
 
     	}
 		
@@ -96,23 +117,7 @@ $(document).ready(function () {
 
     });
 
-    $("div#scrollView").smoothDivScroll({
-    	autoScrollingMode: "",
-    	hotSpotScrolling: false,
-    	touchScrolling: true,
 
-    	startAtElementId: "b",
-		scrollToAnimationDuration: 2000,
-		scrollToEasingFunction: "easeOutBounce",
-
-    	mousewheelScrollingStep: 1,
-    	mousewheelScrolling: "horizontal",
-    	easingAfterMouseWheelScrolling: true,
-    	easingAfterMouseWheelScrollingFunction: "easeOutQuad",
-    	easingAfterMouseWheelScrollingDuration: 500,
-    });
-
-    $("div#scrollView").smoothDivScroll("scrollToElement", "first");
 
 
 });
