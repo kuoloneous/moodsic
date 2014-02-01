@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    $('#firstbutton').click(function (event) {
-        $('#firstbutton').css("background", "green");
+    $('.thumbnailView').click(function (event) {
+        $(this).css("border", "10px solid black").css("box-sizing", "border-box");
     });
 });
