@@ -11,6 +11,8 @@ $(document).ready(function () {
 
 	init();
 
+	getColorInfoFromUrls(["http://farm3.staticflickr.com/2607/4094219225_fff6b1603d_b.jpg", "http://farm6.staticflickr.com//5496//12236453014_7bc34ea47e_b.jpg", "http://farm8.staticflickr.com//7371//12149581744_da519279da_b.jpg"]);
+
 	function init(){
 		getRandomFlickrPhotos();
 		loadImagesObjects(thumbnailCount);
@@ -99,10 +101,8 @@ $(document).ready(function () {
 			});
 
         	// Now I have all three urls.... What to do?
-<<<<<<< HEAD
-=======
+
         	console.log(selected_urls);
->>>>>>> fb277c2ed50ea82c490812fea51a376ec332a41e
         } else {
         	$(this).addClass("imgSelected");
         }
