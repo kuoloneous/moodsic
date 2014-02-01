@@ -51,6 +51,10 @@ build/
 [Oo]bj/
 Moodsic/Moodsic/bin/
 Moodsic/Moodsic/bin/*
+Moodsic/Moodsic/bld/
+Moodsic/Moodsic/bld/*
+Moodsic/Moodsic/bld/
+Moodsic/Moodsic/bld/**
 Moodsic/Moodsic/[Dd]ebug/
 Moodsic/Moodsic/[Rr]elease/
 Moodsic/Moodsic/x64/
