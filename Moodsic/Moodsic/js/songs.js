@@ -19,16 +19,14 @@ function parseQueryResults( data ) {
 	console.log(track_href);
 
 	myHrefs.push(track_href);
+	checkHrefs();
 }
 
-function checkHrefs(myHrefs){
+function checkHrefs(){
+	console.log("Checking hrefs");
 	if(myHrefs.length > 2){
+		console.log("Got enough hrefs");
 		hereAreSongIds(myHrefs);
-		$("#homeView").hide(function() {
-			});
-    	$("#loadingView").hide(function() {
-			});
-    	$("#playerView").show();
 	}
 
 }
