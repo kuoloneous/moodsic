@@ -328,6 +328,10 @@ a {
     cursor: default;
 }
 
+div {
+    cursor: default;
+}
+
 /*
 No border on images when in a link.
 */
