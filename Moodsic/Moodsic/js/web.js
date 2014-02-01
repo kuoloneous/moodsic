@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
 	var pressedButtons;
-	var imageObjects = [];
+	var thumbnailCount= 0;
 	//Data aggregated from Flickr for 64 images
 	var flickrUrlList = new Array(); //title, ownername, url
 
@@ -10,14 +10,21 @@ $(document).ready(function () {
 
 
 	function init(){
-
 		getRandomFlickrPhotos();
-		loadImagesObjects(imageObjects);
+		loadImagesObjects(thumbnailCount);
 
 	}
 
-    function loadImagesObjects(loadedImageObjects) {
+    function loadImagesObjects(tc) {
+    	//and div to scroll view and then 
+    	console.log(flickrUrlList);
+    	console.log(tc);
+    	var upper = tc + 8;
+    	for(var i = tc; i < upper; i++){
+    		console.log(i);
+    		$("#scrollView").append("<div class='thumbnailView' id='" + i + "' url='" + flickrUrlList[i].url + "' style='background-image:url(" + flickrUrlList[i].url + ")'> </div>");
 
+    	}
 		
 	}
 
