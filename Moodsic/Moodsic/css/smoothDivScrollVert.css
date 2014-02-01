@@ -11,9 +11,9 @@ div.scrollWrapper
 	height: 100%;
 }
 
-div.scrollableArea
+div.scrollableArea 
 {
-	position: relative;
-	width: auto;
-	height: 100%;
+    position: relative;
+    width: 100%;
+    height: auto;
 }
