@@ -1,8 +1,24 @@
+var myHrefs = [];
+
 function parseQueryResults( data ) {
 
 	var myJSON = $.xml2json(data);
 	console.log(myJSON);
 	
+	var track = "";
+
+	var track_href = myJSON.track[0].href;
+
+	console.log(track_href);
+
+	myHrefs.push(track_href);
+}
+
+function checkHrefs(myHrefs){
+	if(myHrefs.length > 2){
+		hereAreSongIds(myHrefs);
+	}
+
 }
 
 
