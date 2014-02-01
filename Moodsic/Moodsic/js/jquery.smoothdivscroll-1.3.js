@@ -177,7 +177,7 @@
 								self._checkContinuousSwapRight();
 							}
 						}
-						
+
 						// Callback
 						self._trigger("touchMoved");
 					},
@@ -187,7 +187,7 @@
 
 						// Stop any ongoing auto scrolling
 						self.stopAutoScrolling();
-						
+
 						// Callback
 						self._trigger("touchStopped");
 					}
@@ -457,13 +457,13 @@
 		// This code is run every time the widget is called without arguments
 		 _init: function () {
 			var self = this, el = this.element;
-		 
+
 			// Recalculate the total width of the elements inside the scrollable area
-			//self.recalculateScrollableArea();
-		 
+			self.recalculateScrollableArea();
+
 			// Determine which hotspots to show
 			self._showHideHotSpots();
-		
+
 			// Trigger callback
 			self._trigger("initializationComplete");
 		},
@@ -918,7 +918,7 @@
 							}
 
 							// Recalculate the total width of the elements inside the scrollable area
-							//self.recalculateScrollableArea();
+							self.recalculateScrollableArea();
 
 							// Determine which hotspots to show
 							self._showHideHotSpots();
@@ -996,7 +996,7 @@
 				}
 
 				// Recalculate the total width of the elements inside the scrollable area
-				//self.recalculateScrollableArea();
+				self.recalculateScrollableArea();
 
 				// Determine which hotspots to show
 				self._showHideHotSpots();
@@ -1046,8 +1046,8 @@
 			}
 
 			// Recalculate the total width of the elements inside the scrollable area
-			//self.recalculateScrollableArea();
-	
+			self.recalculateScrollableArea();
+
 			// Determine which hotspots to show
 			self._showHideHotSpots();
 

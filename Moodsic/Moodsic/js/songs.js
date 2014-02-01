@@ -1,8 +1,34 @@
+var myHrefs = [];
+
 function parseQueryResults( data ) {
 
 	var myJSON = $.xml2json(data);
 	console.log(myJSON);
 	
+	if (myJSON.totalResults == 1) {
+		var track_href = myJSON.track.href;
+
+	} else if (myJSON.totalResults == 0) {
+		var track_href = "spotify:track:0x6NRv1pZBsiu32w9sPAiX"
+
+	} else {
+
+		var track_href = myJSON.track[0].href;
+	}
+
+	console.log(track_href);
+
+	myHrefs.push(track_href);
+	checkHrefs();
+}
+
+function checkHrefs(){
+	console.log("Checking hrefs");
+	if(myHrefs.length > 2){
+		console.log("Got enough hrefs");
+		hereAreSongIds(myHrefs);
+	}
+
 }
 
 

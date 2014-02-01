@@ -6,9 +6,9 @@ function Color(red, green, blue) {
 	this.redValue = parseInt(red);
 	this.greenValue = parseInt(green);
 	this.blueValue = parseInt(blue);
-	this.redScaled = Math.floor(red/70);
-	this.greenScaled = Math.floor(green/70);
-	this.blueScaled = Math.floor(blue/70);
+	this.redScaled = Math.floor(red/40);
+	this.greenScaled = Math.floor(green/40);
+	this.blueScaled = Math.floor(blue/40);
 	this.brightnessValue = this.redValue+this.greenValue+this.blueValue;
 	this.brightnessScaled = Math.floor(this.brightnessValue/(77));
 	this.isRed = function() {
@@ -176,6 +176,77 @@ function checkColorsReady() {
 function performColorQuery() {
 
 	var myMood = new Mood(myColors);
+
+	var moods = [];
+
+	if (myMood.dramatic > 0) {
+
+		if (myMood.dramatic > 1) {
+			moods.push("very dramatic");
+		} else {
+			moods.push("dramatic");
+		}
+
+	} if (myMood.calming > 0) {
+
+		if (myMood.calming > 1) {
+			moods.push("very calming");
+		} else {
+			moods.push("calming");
+		}
+
+	} if (myMood.epic > 0) {
+
+		if (myMood.epic > 1) {
+			moods.push("very epic");
+		} else {
+			moods.push("epic");
+		}
+
+	} if (myMood.reflective > 0) {
+
+		if (myMood.reflective > 1) {
+			moods.push("very reflective");
+		} else {
+			moods.push("reflective");
+		}
+
+	} if (myMood.angry > 0) {
+
+		if (myMood.angry > 1) {
+			moods.push("very angry");
+		} else {
+			moods.push("angry");
+		}
+
+	} if (myMood.rebellious > 0) {
+
+		if (myMood.rebellious > 1) {
+			moods.push("very rebellious");
+		} else {
+			moods.push("rebellious");
+		}
+
+	} if (myMood.aggressive > 0) {
+
+		if (myMood.aggressive > 1) {
+			moods.push("very aggressive");
+		} else {
+			moods.push("aggressive");
+		}
+
+	} if (myMood.light > 0) {
+
+		if (myMood.light > 1) {
+			moods.push("very light");
+		} else {
+			moods.push("light");
+		}
+
+	} 
+
+	setMood(moods.join(", "));
+
 	getEchoListFromQueryString(myMood.getQuery());
 
 }
