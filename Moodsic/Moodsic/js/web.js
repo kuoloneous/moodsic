@@ -1,3 +1,6 @@
+
+
+
 $(document).ready(function () {
 	var pressedButtons;
 	var thumbnailCount= 0;
@@ -10,14 +13,12 @@ $(document).ready(function () {
 		getRandomFlickrPhotos();
 		loadImagesObjects(thumbnailCount);
 	}
+	
 
     function loadImagesObjects(tc) {
     	//and div to scroll view and then 
-    	console.log(flickrUrlList);
-    	console.log(tc);
     	var upper = tc + 8;
     	for(var i = tc; i < upper; i++){
-    		console.log(i);
     		$("#scrollView").append("<div class='thumbnailView' id='" + i + "' url='" + flickrUrlList[i].url + "' style='background-image:url(" + flickrUrlList[i].url + ")'> </div>");
 
     	}
@@ -96,7 +97,6 @@ $(document).ready(function () {
         	});
 
         	// Now I have all three urls.... What to do?
-			console.log(selected_urls);
         } else {
 	        $(this).addClass("imgSelected");
         }
@@ -112,3 +112,6 @@ $(document).ready(function () {
 
     });
 });
+
+
+

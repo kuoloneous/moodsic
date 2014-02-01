@@ -1,8 +1,14 @@
-﻿.thumbnailView{
+﻿body {
+
+    font-family: "Avenir Next", "Helvetica Neue", sans-serif;
+
+}
+
+.thumbnailView{
     width: 25%;
     height: 50%;
     float:left;
-    background: grey;
+    background-size: 100% auto;
 }
 
 #a{

@@ -1,5 +1,6 @@
 import my_vars
 from imagga.color import ColorAPIClient
+import math
 
 class Color:
 	def __init__(self, r, g, b, p):
@@ -39,7 +40,7 @@ def get_color_info_from_urls(urls):
 			blue = int(color['b'])
 			green = int(color['g'])
 			percentage = color['percent']
-			colorsForImage.append(Color(red, blue, green, percentage))
+			colorsForImage.append(Color(red, green, blue, percentage))
 		myColors.append(colorsForImage)
 
 	return myColors
@@ -56,6 +57,40 @@ class Mood:
 		self.aggressive = aggressive
 		self.light = light
 		self.brightness = brightness
+
+	def query_string(self):
+		q = []
+
+		if self.dramatic > 0:
+			q.append("mood=dramatic^"+str(self.dramatic))
+		if self.calming > 0:
+			q.append("mood=calming^"+str(self.calming))
+		if self.epic > 0:
+			q.append("mood=epic^"+str(self.epic))
+		if self.reflective > 0:
+			q.append("mood=reflective^"+str(self.reflective))
+		if self.angry > 0:
+			q.append("mood=angry^"+str(self.angry))
+		if self.rebellious > 0:
+			q.append("mood=rebellious^"+str(self.rebellious))
+		if self.aggressive > 0:
+			q.append("mood=aggressive^"+str(self.aggressive))
+		if self.light > 0:
+			q.append("mood=light^"+str(self.light))
+
+		min_tempo = ""
+		max_tempo = ""
+		if self.brightness <= 4:
+			min_tempo = "60"
+			max_tempo = str(int(math.floor(180 - ((4-self.brightness) * 20))))
+		else :
+			min_tempo = str(int(math.floor(((self.brightness - 4) * 10) + 60)))
+			max_tempo = "180"
+
+		q.append("min_tempo="+min_tempo)
+		q.append("max_tempo="+max_tempo)
+
+		return "&".join(q)
 
 
 def get_mood_info_from_colors(colors):
@@ -85,26 +120,13 @@ def get_mood_info_from_colors(colors):
 				rebellious += color.percentage / (len(colors)*100)
 			elif color.red_quadrant == 1 and color.green_quadrant == 1 and color.blue_quadrant == 0 :
 				aggressive += color.percentage / (len(colors)*100)
-			else: #'''(color.red_quadrant == 1 and color.green_quadrant == 1 and color.blue_quadrant == 1'''
+			else:
 				light += color.percentage / (len(colors)*100)
+			brightness += color.brightness
+		brightness = brightness / (len(image))
+
+	brightness = brightness / len(colors)
 
 	mood = Mood(dramatic,calming,epic,reflective,angry,rebellious,aggressive,light,brightness)
 
 	return mood
-
-
-class MoodString:
-	def __init__(self, query):
-		self.query = query
-
-def get_string_info_from_mood(mood):
-	queryString = MoodString("mood=dramatic^"+str(mood.dramatic)
-		+"&mood=calming^"+str(mood.calming)
-			+"&mood=epic^"+str(mood.epic)
-				+"&mood=reflective^"+str(mood.reflective)
-					+"&mood=angry^"+str(mood.angry)
-						+"&mood=rebellious^"+str(mood.rebellious)
-							+"&mood=aggressive^"+str(mood.aggressive)
-								+"mood=light^"+str(mood.light))
-
-	return queryString
