@@ -86,6 +86,13 @@
     width:128px;
 }
 
+#logo
+{
+    position: absolute;
+    left:32px;
+    top:32px;
+}
+
 iframe {
     margin: auto auto;
     display: block;
