@@ -8,6 +8,7 @@ function parseEchoResults( data ) {
 
 	while (num_songs < 3 && i < (myJSON.songs.song.length)) {
 		q = myJSON.songs.song[i].artist_name+" "+myJSON.songs.song[i].title;
+		console.log("num songs is ..."+num_songs+" and q = "+q);
 		if (num_songs == 0) {
 
 			song_one_query = q;
@@ -22,7 +23,7 @@ function parseEchoResults( data ) {
 
 			} 
 		} else {
-			if (((q != song_one_query) && (q != song_two_query)) || (i < (myJSON.songs.song.length-1) )) {
+			if (((q != song_one_query) && (q != song_two_query)) || (i == (myJSON.songs.song.length-1) )) {
 
 				song_three_query = q;
 				num_songs++;
