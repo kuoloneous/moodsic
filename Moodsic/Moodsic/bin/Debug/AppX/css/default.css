@@ -1,2 +1,11 @@
 ﻿body {
 }
+
+
+.buttons {
+	background: blue;
+}
+
+#secondbutton{
+	background: red;
+}

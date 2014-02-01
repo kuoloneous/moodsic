@@ -49,14 +49,15 @@ x64/
 build/
 [Bb]in/
 [Oo]bj/
-
+Moodsic/Moodsic/bin/
+Moodsic/Moodsic/bin/*
 Moodsic/Moodsic/[Dd]ebug/
 Moodsic/Moodsic/[Rr]elease/
 Moodsic/Moodsic/x64/
 Moodsic/Moodsic/build/
 Moodsic/Moodsic/[Bb]in/
 Moodsic/Moodsic/[Oo]bj/
-
+bin/
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
