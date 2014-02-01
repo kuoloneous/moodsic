@@ -15,7 +15,12 @@ $(document).ready(function () {
 
 	init();
 
+<<<<<<< HEAD
 	//getSongsFromQuery("Linkin Park Numb");
+=======
+	getColorInfoFromUrls(["http://farm3.staticflickr.com/2607/4094219225_fff6b1603d_b.jpg", "http://farm8.staticflickr.com/7348/12227966384_c557261b47_b.jpg", "http://farm8.staticflickr.com/7371/12149581744_da519279da_b.jpg"]);
+
+>>>>>>> 2e70608b28bcbae3bbd17a9ee86c43f5f9399f20
 
 	function init(){
 		//Initialize Photos
