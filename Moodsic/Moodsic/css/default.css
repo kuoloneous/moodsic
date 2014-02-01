@@ -7,15 +7,19 @@
 .thumbnailView{
     width: 25%;
     height: 50%;
-    float:left;
+    float: left;
     background-size: 100% auto;
 }
 
-
+.thumbPage{
+    height:100%;
+    width:100%;
+    float: left;
+}
 
 #scrollView
 {
-    width:100%;
+    
     height: 100%;
     position: relative;
 }
