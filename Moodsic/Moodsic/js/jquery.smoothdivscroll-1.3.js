@@ -459,7 +459,7 @@
 			var self = this, el = this.element;
 		 
 			// Recalculate the total width of the elements inside the scrollable area
-			self.recalculateScrollableArea();
+			//self.recalculateScrollableArea();
 		 
 			// Determine which hotspots to show
 			self._showHideHotSpots();
@@ -918,7 +918,7 @@
 							}
 
 							// Recalculate the total width of the elements inside the scrollable area
-							self.recalculateScrollableArea();
+							//self.recalculateScrollableArea();
 
 							// Determine which hotspots to show
 							self._showHideHotSpots();
@@ -996,7 +996,7 @@
 				}
 
 				// Recalculate the total width of the elements inside the scrollable area
-				self.recalculateScrollableArea();
+				//self.recalculateScrollableArea();
 
 				// Determine which hotspots to show
 				self._showHideHotSpots();
@@ -1046,7 +1046,7 @@
 			}
 
 			// Recalculate the total width of the elements inside the scrollable area
-			self.recalculateScrollableArea();
+			//self.recalculateScrollableArea();
 	
 			// Determine which hotspots to show
 			self._showHideHotSpots();
