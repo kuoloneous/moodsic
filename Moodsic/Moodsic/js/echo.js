@@ -3,10 +3,36 @@ function parseEchoResults( data ) {
 	var myJSON = $.xml2json(data);
 	console.log(myJSON);
 
-	song_one_query = myJSON.songs.song[0].artist_name+" "+myJSON.songs.song[0].title;
-	song_two_query = myJSON.songs.song[1].artist_name+" "+myJSON.songs.song[1].title;
-	song_three_query = myJSON.songs.song[2].artist_name+" "+myJSON.songs.song[2].title;
+	i = 0;
+	num_songs = 0;
 
+	while (num_songs < 3 && i < (myJSON.songs.song.length)) {
+		q = myJSON.songs.song[i].artist_name+" "+myJSON.songs.song[i].title;
+		if (num_songs == 0) {
+
+			song_one_query = q;
+
+			num_songs++;
+
+		} else if (num_songs == 1) {
+			if ((q != song_one_query) || (i == (myJSON.songs.song.length-2) )) {
+
+				song_two_query = q;
+				num_songs++;
+
+			} 
+		} else {
+			if (((q != song_one_query) && (q != song_two_query)) || (i < (myJSON.songs.song.length-1) )) {
+
+				song_three_query = q;
+				num_songs++;
+
+			} 
+
+		}
+		i++;
+	}
+ 	
 
 	console.log(song_one_query);
 	console.log(song_two_query);

@@ -6,9 +6,9 @@ function Color(red, green, blue) {
 	this.redValue = parseInt(red);
 	this.greenValue = parseInt(green);
 	this.blueValue = parseInt(blue);
-	this.redScaled = Math.floor(red/40);
-	this.greenScaled = Math.floor(green/40);
-	this.blueScaled = Math.floor(blue/40);
+	this.redScaled = Math.floor(red/115);
+	this.greenScaled = Math.floor(green/115);
+	this.blueScaled = Math.floor(blue/115);
 	this.brightnessValue = this.redValue+this.greenValue+this.blueValue;
 	this.brightnessScaled = Math.floor(this.brightnessValue/(77));
 	this.isRed = function() {
@@ -80,27 +80,26 @@ function Mood(colors) {
 
 	$.each(colors, function( index, value ) {
 
-		console.log(value);
 		console.log(this);
 		if (!value.isRed() && !value.isGreen() && !value.isBlue()) {
 			// rgb = 000
 			myMood.dramatic += 1;
-		} else if (!value.isRed && !value.isGreen && value.isBlue) {
+		} else if (!value.isRed() && !value.isGreen() && value.isBlue()) {
 			// rgb = 001
 			myMood.calming += 1;
-		} else if (!value.isRed && value.isGreen && !value.isBlue) {
+		} else if (!value.isRed() && value.isGreen() && !value.isBlue()) {
 			// rgb = 010
 			myMood.epic += 1;
-		} else if (!value.isRed && value.isGreen && value.isBlue) {
+		} else if (!value.isRed() && value.isGreen() && value.isBlue()) {
 			// rgb = 011
 			myMood.reflective += 1;
-		} else if (value.isRed && !value.isGreen && !value.isBlue) {
+		} else if (value.isRed() && !value.isGreen() && !value.isBlue()) {
 			// rgb = 100
 			myMood.angry += 1;
-		} else if (value.isRed && !value.isGreen && value.isBlue) {
+		} else if (value.isRed() && !value.isGreen() && value.isBlue()) {
 			// rgb = 101
 			myMood.rebellious += 1;
-		} else if (value.isRed && value.isGreen && !value.isBlue) {
+		} else if (value.isRed() && value.isGreen() && !value.isBlue()) {
 			// rgb = 110
 			myMood.aggressive += 1;
 		} else {
