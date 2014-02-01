@@ -77,6 +77,7 @@ $(document).ready(function () {
     	$("div#scrollView").smoothDivScroll("scrollToElement", "first");
 
 
+    	/*
     	$('.thumbnailView').click(function (event) {
     		if( $(this).data('clicked') == false || $(this).data('clicked') == null){
     			$(this).data('clicked', true);
@@ -86,6 +87,7 @@ $(document).ready(function () {
     			$(this).css("border", "0px").css("box-sizing", "border-box");
 		    //remove image from pressed
 		}
+
 		if ($('.imgSelected').length == 2) {
 
 			$(this).addClass("imgSelected");
@@ -99,10 +101,7 @@ $(document).ready(function () {
 			});
 
         	// Now I have all three urls.... What to do?
-<<<<<<< HEAD
-=======
         	console.log(selected_urls);
->>>>>>> fb277c2ed50ea82c490812fea51a376ec332a41e
         } else {
         	$(this).addClass("imgSelected");
         }
@@ -112,7 +111,8 @@ $(document).ready(function () {
         	perspective: '1000px',
         	rotateX: '90deg',
 		}, 500, "easeOutQuad");
-    });
+		});
+		*/
 });
 
 
