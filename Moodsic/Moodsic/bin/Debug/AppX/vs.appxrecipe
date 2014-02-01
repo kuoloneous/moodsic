@@ -17,13 +17,13 @@
     <AppXManifest Include="C:\Users\Albert\Documents\GitHub\spderp\Moodsic\Moodsic\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-02-01T02:54:26.499</Modified>
+      <Modified>2014-02-01T06:28:56.744</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Albert\Documents\GitHub\spderp\Moodsic\Moodsic\index.html">
       <PackagePath>index.html</PackagePath>
-      <Modified>2014-02-01T02:53:16.463</Modified>
+      <Modified>2014-02-01T06:28:48.672</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Albert\Documents\GitHub\spderp\Moodsic\Moodsic\images\logo.scale-100.png">
       <PackagePath>images\logo.scale-100.png</PackagePath>
@@ -47,15 +47,15 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Albert\Documents\GitHub\spderp\Moodsic\Moodsic\js\default.js">
       <PackagePath>js\default.js</PackagePath>
-      <Modified>2013-07-22T05:19:32.000</Modified>
+      <Modified>2014-02-01T06:19:59.875</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Albert\Documents\GitHub\spderp\Moodsic\Moodsic\css\default.css">
       <PackagePath>css\default.css</PackagePath>
-      <Modified>2013-07-22T05:19:32.000</Modified>
+      <Modified>2014-02-01T06:20:02.710</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Albert\Documents\GitHub\spderp\Moodsic\Moodsic\bin\Debug\ReverseMap\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2014-02-01T02:54:26.326</Modified>
+      <Modified>2014-02-01T06:28:56.276</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
