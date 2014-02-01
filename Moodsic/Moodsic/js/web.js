@@ -26,8 +26,6 @@ $(document).ready(function () {
 		var song_two_href = "";
 		var song_three_href = "";
 
-		alert("Got to here!");
-
 		$.each(ids, function (index, value) {
 
 			if (index == 1) {
