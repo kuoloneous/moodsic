@@ -81,25 +81,11 @@ $(document).ready(function () {
 	    });
 	    
 	    $("#scrollView").smoothDivScroll("scrollToElement", "first");
-
-	 	//$("#scrollableArea").css("width", 100*(thumbnailCount/8 + 1) + "%" );
-
-	    $('.thumbnailView').click(function (event) {
-
-	     if( $(this).data('clicked') == false || $(this).data('clicked') == null){
-		     $(this).data('clicked', true);
-		     $(this).css("border", "10px solid black").css("box-sizing", "border-box");
-		     addImage($(this).data('url'));
-	     } else {
-	     	console.log($(this).data('clicked'));	
-		     $(this).data('clicked', false);
-		     $(this).css("border", "0px").css("box-sizing", "border-box");
-		     removeImage($(this).data('url'));
-		   	
-	   
-	     }
 	    
-	 	});
+
+
+	 	//Check for click drag
+	 	clickedThumbnailListener();
 
 	}
 	function addImage(image_url){
@@ -134,6 +120,40 @@ $(document).ready(function () {
 		}
 
 	}
+	function clickedThumbnailListener(){
+		var dragged = false
+		var timeout;
+		$('.scrollableArea').mousedown(function(){
+			timeout = setTimeout(function() {
+				dragged = true;
+			}, 100);
+		}).mouseup(function(){
+			if(!dragged){
+			    $('.thumbnailView').click(function (event) {
+
+			     if( $(this).data('clicked') == false || $(this).data('clicked') == null){
+				     $(this).data('clicked', true);
+				     $(this).css("border", "10px solid black").css("box-sizing", "border-box");
+				     addImage($(this).data('url'));
+			     } else {
+			     	console.log($(this).data('clicked'));	
+				     $(this).data('clicked', false);
+				     $(this).css("border", "0px").css("box-sizing", "border-box");
+				     removeImage($(this).data('url'));
+				   	
+			   
+			     }
+			 });					
+			} else {
+				console.log("dragged...");
+			}
+			dragged = false;
+			clearTimeout(timeout);
+		});
+
+			    
+
+    }
 	var fadeTime = 8000;
 	function cycleBackgrounds(){
 
