@@ -1,5 +1,5 @@
 var mood = "Moodsic";
-
+var loaded = false;
 function hereAreSongIds(ids) {
 
 		var song_one_href = "";
@@ -28,13 +28,16 @@ function hereAreSongIds(ids) {
 
 		});
 
-		$('#playerView').append("<iframe src=\"https://embed.spotify.com/?uri=spotify:trackset:"+mood+":"+song_one_href+","+song_two_href+","+song_three_href+"\" frameborder=\"0\" width=\"640\" height=\"720\" allowtransparency=\"true\"></iframe>");
+		$('#playerView').append("<iframe id='spotifyPlayer' src=\"https://embed.spotify.com/?uri=spotify:trackset:"+mood+":"+song_one_href+","+song_two_href+","+song_three_href+"\" frameborder=\"0\" height='560' width='480' allowtransparency=\"true\"></iframe>");
 
 		$("#homeView").hide(function() {
 			});
     	$("#loadingView").hide(function() {
 			});
+
     	$("#playerView").show();
+    	loaded = true;
+  	
 		
 	}
 

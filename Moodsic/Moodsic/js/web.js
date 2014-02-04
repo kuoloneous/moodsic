@@ -5,64 +5,16 @@ $(document).ready(function () {
 
 	var selectedImages = new Array();
 	var thumbnailCount= 0;
-	//Data aggregated from Flickr for 64 images
 	var flickrUrlList = new Array(); //title, ownername, url
 
 
-    $('#playerView').click(function (event) {
-            $('#playerView').append("<iframe src=\"https://embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:5Z7ygHQo02SUrFmcgpwsKW,1x6ACsKV4UdWS2FMuPFUiT,4bi73jCM02fMpkI11Lqmfe\" frameborder=\"0\" width=\"640\" height=\"720\" allowtransparency=\"true\"></iframe>");
-    });
 
 	init();
-
-	//getSongsFromQuery("Linkin Park New Divide");
-	//getColorInfoFromUrls(["http://farm3.staticflickr.com/2607/4094219225_fff6b1603d_b.jpg", "http://farm8.staticflickr.com/7348/12227966384_c557261b47_b.jpg", "http://farm8.staticflickr.com/7371/12149581744_da519279da_b.jpg"]);
-
-	//getSongsFromQuery("Linkin Park Numb");
-
-	function hereAreSongIds(ids) {
-
-		var song_one_href = "";
-		var song_two_href = "";
-		var song_three_href = "";
-
-		$.each(ids, function (index, value) {
-
-			if (index == 1) {
-				// split value
-				// get [2]
-				parts = value.split(":");
-				song_one_href = parts[2];
-
-			} else if (index == 2) {
-
-				parts = value.split(":");
-				song_two_href = parts[2];
-
-			} else {
-
-				parts = value.split(":");
-				song_three_href = parts[2];
-
-			}
-
-		});
-
-		$('#playerView').append("<iframe src=\"https://embed.spotify.com/?uri=spotify:trackset:Moodsic:"+song_one_href+","+song_two_href+","+song_three_href+"\" frameborder=\"0\" width=\"640\" height=\"720\" allowtransparency=\"true\"></iframe>");
-
-		$("#homeView").hide(function() {
-			});
-    	$("#loadingView").hide(function() {
-			});
-    	$("#playerView").show();
-
-    	$("#loadingImage1").hide();
-    	$("#loadingImage2").hide();
-    	$("#loadingImage3").hide();
-
-    	//Remove the images from 
-		
-	}
+	playerViewCycleBackgrounds(0);
+	//functions
+	//loadScrollView
+	//LoadingView
+	//Load
 
 	function init(){
 		//Initialize Photos
@@ -103,6 +55,13 @@ $(document).ready(function () {
 	                });
 	            $("#homeView").show();
 	    });
+
+		$('#playerBG').mousemove(function( event ) {
+			if($('#playerBGInfo').css("display") == 'none'){
+				$('#playerBGInfo').show(1500);	
+			}
+			
+		});
 
 		//load scroller
 		$("#scrollView").smoothDivScroll({
@@ -154,14 +113,15 @@ $(document).ready(function () {
 	    	$("#playerView").hide(function() {
 				});
 	    	$("#loadingView").show();
+
 	    	//Start analyzing
 	    	getColorInfoFromUrls(selectedImages);
 	    	$("#loadingImage1").hide();
 	    	$("#loadingImage2").hide();
 	    	$("#loadingImage3").hide();
-	    	$("#loadingImage1").append("<img src='" + selectedImages[0] + "' class='loadingImage' />");
-	    	$("#loadingImage2").append("<img src='" + selectedImages[1] + "' class='loadingImage' />");
-	    	$("#loadingImage3").append("<img src='" + selectedImages[2] + "' class='loadingImage' />");
+	    	$("#loadingImage1").css("background", "url(" + selectedImages[0] + ") no-repeat center center fixed" ).css("background-size", "cover");
+	    	$("#loadingImage2").css("background", "url(" + selectedImages[1] + ") no-repeat center center fixed" ).css("background-size", "cover");
+	    	$("#loadingImage3").css("background", "url(" + selectedImages[2] + ") no-repeat center center fixed" ).css("background-size", "cover");
 
 	    	//$("#loadingImage1").css("background", "url(" + selectedImages[0] + ") no-repeat center center fixed");
 	    	//$("#loadingImage2").css("background", "url(" + selectedImages[1] + ") no-repeat center center fixed");
@@ -174,27 +134,40 @@ $(document).ready(function () {
 		}
 
 	}
-	var fadeTime = 4000;
+	var fadeTime = 8000;
 	function cycleBackgrounds(){
 
-		$("#loadingImage1").fadeIn(4000, function() {
-			//$("#loadingImage3").hide();
-			$("#loadingImage1").fadeOut(4000, function() {
-				$("#loadingImage2").fadeIn(4000, function() {
-					//$("#loadingImage3").hide();
-					$("#loadingImage2").fadeOut(4000, function() {
-						$("#loadingImage3").fadeIn(4000, function() {
-							//$("#loadingImage3").hide();
-							$("#loadingImage3").fadeOut(4000, function() {
-								cycleBackgrounds();			
-							});	
-						});
+			$("#loadingImage1").fadeIn(4000, function() {
+
+					$("#loadingImage2").fadeIn(4000, function() {
+
+							$("#loadingImage3").fadeIn(4000, function() {
+				
+							});
+						
 					});
-				});
+		
 			});
-		});
+
 	}
 
+	function playerViewCycleBackgrounds(picIndex ){
+
+		if(picIndex < flickrUrlList.length){
+			console.log(flickrUrlList[picIndex]);
+			$("#playerBG").css("background", "url(" + flickrUrlList[picIndex].url + ") no-repeat center center fixed" ).css("background-size", "cover");
+			$("#playerBGInfo").text(flickrUrlList[picIndex].title + " by " + flickrUrlList[picIndex].ownername);
+			$("#playerBG").fadeIn(fadeTime, function(){
+				$("#playerBG").fadeOut(fadeTime, function(){
+					$("#playerBGInfo").hide();
+					 playerViewCycleBackgrounds(picIndex + 1);
+				});
+			});			
+			
+		} else if(picIndex == flickrUrlList.length) {
+			playerViewCycleBackgrounds(0);
+		}
+	}
 
 	function removeImage(image_url){
 		for(var i = 0; i < selectedImages.length; i++){
@@ -222,10 +195,10 @@ $(document).ready(function () {
  	}
     
     function getRandomFlickrPhotos(){
-    	var flickr_url = 'http://api.flickr.com/services/rest/?&method=flickr.groups.pools.getPhotos&api_key=fab0b8729460ee819e440ee3fb03381a&group_id=364847@N20&extras=url_l&format=json&nojsoncallback=1&per_page=64&page=';
+    	var flickr_url = 'http://api.flickr.com/services/rest/?&method=flickr.groups.pools.getPhotos&api_key=fab0b8729460ee819e440ee3fb03381a&group_id=364847@N20&extras=url_l&format=json&nojsoncallback=1&per_page=100&page=';
         
         
-    	flickr_url = flickr_url	+ Math.floor((Math.random()*392)+1);
+    	flickr_url = flickr_url	+ Math.floor((Math.random()*251)+1);
     	//$.getJSON(flickr_url, function(data){
 
 
@@ -233,7 +206,7 @@ $(document).ready(function () {
         url: flickr_url,
         async:false,
         success: function(result){
-            
+            console.log(result);
             
             var photosList = result.photos.photo;
             
@@ -246,14 +219,58 @@ $(document).ready(function () {
                     url: photosList[i].url_l,
                     ownername: photosList[i].ownername,
                     });
+
+
                 }
                 
             }
+
         }
     	});
         
     }
-    
+
+    function hereAreSongIds(ids) {
+
+		var song_one_href = "";
+		var song_two_href = "";
+		var song_three_href = "";
+
+		$.each(ids, function (index, value) {
+
+			if (index == 1) {
+				// split value
+				// get [2]
+				parts = value.split(":");
+				song_one_href = parts[2];
+
+			} else if (index == 2) {
+
+				parts = value.split(":");
+				song_two_href = parts[2];
+
+			} else {
+
+				parts = value.split(":");
+				song_three_href = parts[2];
+
+			}
+
+		});
+
+		$('#playerView').append("<iframe src=\"https://embed.spotify.com/?uri=spotify:trackset:Moodsic:"+song_one_href+","+song_two_href+","+song_three_href+"\" frameborder=\"0\"  allowtransparency=\"true\"></iframe>");
+
+		$("#homeView").hide();
+    	$("#loadingView").hide();
+    	$("#playerView").show();
+
+    	$("#loadingImage1").hide();
+    	$("#loadingImage2").hide();
+    	$("#loadingImage3").hide();
+
+    	//Remove the images from 
+		
+	}
 
     /*
      $('.thumbnailView').click(function (event) {

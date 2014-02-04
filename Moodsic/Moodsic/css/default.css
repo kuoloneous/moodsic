@@ -64,8 +64,8 @@
     float: left;
     position: relative;
     background-color: #282828;
-    padding-top: 32px;
-    padding-left: 32px;
+
+    display:none;
 }
 
 #loadingView {
@@ -73,39 +73,63 @@
     height: 100%;
     background-color: white;
     box-shadow:inset 0 0 100px 5px #000000;
+    display:none;
 }
 
-.loadingContainer {
+.bgImage {
     width: 100%;
     height: 100%;
+    background-size: cover;
+    background: no-repeat center center fixed;
+    position: absolute;
+
+}
+
+#playerBG{
+    display:none;
+}
+
+#playerBGInfo{
+
+    position:absolute;
+    bottom: 0;
+    float: left;
+    position: absolute;
+    height: 30px;
+    color: black;
+    opacity: 0.3;
+    font-size: 2em;
+
 
 }
 
 .loadingImage {
-    margin: auto;
-    box-shadow: 0 8px 6px -6px black;
-    display:block;
-    height: 90%;
+    width: 25%;
+    margin-left:6%;
+    float:left;
+    display: relative;
+    height: 100%;
+    background-size: cover;
+    background: no-repeat center center fixed;
 
 }
 
 #loadingText{
-    text-align: center;
-    vertical-align: middle;
     width: 100%;
-    height: 100%;
-   
-    top: 0;
+    height: 30px;
+    background-color: black;
+    opacity: 0.5;
+    position:absolute;
+    left:0;
+    top:0;
 
 }
-#loadingText h1{
 
-}
 
 #DebugMenu
 {
     width: 100%;
-    height 30px;
+    height: 30px;
     background-color: black;
     opacity: 0.5;
     position:absolute;
@@ -125,8 +149,11 @@
     top:32px;
 }
 
-iframe {
-    margin: auto auto;
+#playerView iframe {
+    float:right;
+    position: relative;
     display: block;
 
+
 }
+
