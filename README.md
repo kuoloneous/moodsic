@@ -1,4 +1,4 @@
-spderp
+Moodsic
 ======
 
-USC/UCLA Mash Up Hackathon Submission
+USC/UCLA Mash Up Hackathon Submission 
